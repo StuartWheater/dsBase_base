@@ -1,0 +1,26 @@
+FROM cimg/base:current
+
+RUN sudo apt-get update -y
+RUN sudo apt-get upgrade -y
+
+RUN sudo apt install --no-install-recommends software-properties-common dirmngr
+RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+RUN sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+RUN sudo apt update -qq
+
+RUN sudo apt-get install -qq pkg-config -y
+RUN sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev libharfbuzz-dev libfribidi-dev -y
+RUN sudo apt-get install -qq r-base -y
+RUN sudo R -e "install.packages('devtools', dependencies=TRUE)"
+RUN sudo R -e "install.packages('RANN', dependencies=TRUE)"
+RUN sudo R -e "install.packages('stringr', dependencies=TRUE)"
+RUN sudo R -e "install.packages('lme4', dependencies=TRUE)"
+RUN sudo R -e "install.packages('dplyr', dependencies=TRUE)"
+RUN sudo R -e "install.packages('reshape2', dependencies=TRUE)"
+RUN sudo R -e "install.packages('polycor', dependencies=TRUE)"
+RUN sudo R -e "install.packages('splines', dependencies=TRUE)"
+RUN sudo R -e "install.packages('gamlss', dependencies=TRUE)"
+RUN sudo R -e "install.packages('gamlss.dist', dependencies=TRUE)"
+RUN sudo R -e "install.packages('mice', dependencies=TRUE)"
+RUN sudo R -e "install.packages('data.table', dependencies=TRUE)"
+RUN sudo R -e "install.packages('childsds', dependencies=TRUE)"
