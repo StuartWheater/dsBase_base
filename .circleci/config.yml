@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  dsbaseclient_base:
+  dsbase_base:
     docker:
       - image: cimg/base:current
         auth:
@@ -24,10 +24,10 @@ jobs:
           name: Build and push docker image
           command: |
             TAG=1.0.$CIRCLE_BUILD_NUM
-            docker build -t datashield/dsbaseclient-base:$TAG --file dsBaseClient_Dockerfile .
+            docker build -t datashield/dsbase-base:$TAG --file dsBase_Dockerfile .
             docker login docker.io -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
-            docker push datashield/dsbaseclient-base:$TAG
+            docker push datashield/dsbase-base:$TAG
 workflows:
   build:
     jobs:
-      - dsbaseclient_base
+      - dsbase_base
