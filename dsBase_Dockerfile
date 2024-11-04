@@ -10,6 +10,7 @@ RUN sudo apt-get update -qq
 
 RUN sudo apt-get install -qq pkg-config -y
 RUN sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev libharfbuzz-dev libfribidi-dev -y
+RUN sudo apt-get install -qq libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev -y
 RUN sudo apt-get install -qq --no-install-recommends r-base -y
 
 RUN sudo apt-get update -y
